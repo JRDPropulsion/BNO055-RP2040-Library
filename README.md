@@ -1,6 +1,6 @@
 # BNO055-Library-RP2040
 This is a simple library that allows the communication from any RP2040 based board with the BNO055 sensor using I2C. This library
-works best with the Arduino framework. *Note that this library is under developement and will take time to be fully functional.
+works best with the Arduino framework. Note that this library is under developement and will take time to be fully functional.
 
 
 HOW TO USE:
