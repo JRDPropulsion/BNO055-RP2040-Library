@@ -4,10 +4,22 @@ works best with the Arduino framework.
 
 * Note that this library is under developement and will take time to be fully functional. *
 
-* A known issue is with NDOF mode. Currently, all data from the BNO055 is obtained in NDOF sensor-fusion mode. This is bad because even raw data from the sensor has fused data that is used for filtering. For example, if you print the raw gyro data, you will see that it mysteriously does not drift and even if you move it a lot, it will always come back to zero. The data if very smooth. This is bad because it is using mysterious math and can mess up the gyro data. For example, if you were using this gyro data to determind orientation, after some movement, the gyros can deviate, sometimes to 50 or 100 degrees more than the ange is suppossed to be. NDOF mode also runs mysterious calibration of all three sensors in sensor-fusion mode which helps the gyros deviate from their correct orientation. In the future, AMG mode will be enabled instead of NDOF so that there is no sensor fusion enable. Data may not be as smooth as in NDOF mode but will be more correct and will not mess up when trying to determine orientation using only the gyroscopes. *
+HOW TO USE:
+This library features an example file that you can use to obtain the raw gyro rates from the BNO055. In order to use this library, 
+you must to the following things:
+- Make sure you are using the RP2040. This library uses the hardware/i2c library that is meant for the RP2040. 
+  This is most likely already installed by default if you are using the RP2040. Secondly, this works best with the Adafruit BNO055
+  breakout board but others may work as well. The best RP2040 board to use is the Raspberry Pi pico as it has been tested. 
+  You may need to do some configuration work with a custom RP2040 baised board.
+- Go to the BNO055.cpp file and change the SDA and SCL pin numbers to the pin numbers you want to use. 
+  By default, SDA is set to pin 26 and SCL is set to pin 27, both of which are the GPIO pin numbers onboard the Raspberry Pi pico.
+Once you have completed the steps above, you are ready to move on. You can either use the Arduino IDE or Platform IO to upload to the board. 
+There are alternatives that may work as well but these are the most popular. Then, it is as simple as uploading the sketch to the board!
+You will recieve raw gyro rates but you can also retrieve raw acceleration data. The process is the exact same to that of the gyroscopes.
+This library does not retrieve sensor fusion data. If you wish to retrieve sensor fusion, then go to the BNO055.cpp file and uncomment 
+this line of code:  //data[1] = 0x0C; // Set operation to NDOF. Next, comment out thise: data[1] = 0x03;. If you make these changes, 
+you can modify the library to retrieve sensor fusion data as well as acceleration data since the default mode only retrieves gyro data.
 
-As of 12/5/22, this library functions to retrieve acceleration measurements and gyroscope measurements. Future updates will include:
-- An easy to use user guide explaining how the library works and how to use it
-- The addition to get more data from other sensors in the BNO055 IMU
-- A calibration function to increase the accuracy
+
+  
 
