@@ -73,10 +73,10 @@ void BNO055_sensor::begin()
     i2c_write_blocking(I2C_PORT, BNO055_I2C_ADDR, data, 2, true);
     delay(30);
 
-    // Set operation to NDOF
+    // Set operation to GYROONLY
     data[0] = 0x3D;
     data[1] = 0x03;
-    //data[1] = 0x0C;
+    //data[1] = 0x0C; // Set operation to NDOF
     i2c_write_blocking(I2C_PORT, BNO055_I2C_ADDR, data, 2, true);
     delay(100);
 }
