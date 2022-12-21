@@ -13,6 +13,7 @@ you must to the following things:
   You may need to do some configuration work with a custom RP2040 baised board.
 - Go to the BNO055.cpp file and change the SDA and SCL pin numbers to the pin numbers you want to use. 
   By default, SDA is set to pin 26 and SCL is set to pin 27, both of which are the GPIO pin numbers onboard the Raspberry Pi pico.
+  
 Once you have completed the steps above, you are ready to move on. You can either use the Arduino IDE or Platform IO to upload to the board. 
 There are alternatives that may work as well but these are the most popular. Then, it is as simple as uploading the sketch to the board!
 You will recieve raw gyro rates but you can also retrieve raw acceleration data. The process is the exact same to that of the gyroscopes.
